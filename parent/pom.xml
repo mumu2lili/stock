@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<groupId>com.piggy.stock</groupId>
+	<artifactId>stock-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- Compilation -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Testing -->
+		<cobertura.plugin.version>2.7</cobertura.plugin.version>
+		<surefire.version>2.18.1</surefire.version>
+		<plantuml.version>6121</plantuml.version>
+		<ant.version>1.8.4</ant.version>
+		<includedTestGroups />
+		<excludedTestGroups>Integration,Acceptance,Live,WIP</excludedTestGroups>
+		<surefire.failIfNoSpecifiedTests>false</surefire.failIfNoSpecifiedTests>
+
+		<!-- Ordinary dependencies -->
+		<taglibs.version>1.1.2</taglibs.version>
+		<mybatis-starter.version>1.3.0</mybatis-starter.version>
+		<dhcp2.version>2.1.1</dhcp2.version>
+		<mysql.version>5.1.22</mysql.version>
+		<commons-fileupload.version>1.3.2</commons-fileupload.version>
+
+		<!-- Transitive dependencies, declared explicitly to avoid version mismatch -->
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j-api.version>1.7.25</slf4j-api.version>
+
+		<profiles.active>dev</profiles.active>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Finchley.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>${taglibs.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-starter.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-api.version}</version>
+			</dependency>
+
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<inherited>true</inherited>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+							<configuration>
+								<updatePomFile>true</updatePomFile>
+								<flattenMode>oss</flattenMode>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-enforcer-plugin
+										</artifactId>
+										<versionRange>
+											[1.3.1,)
+										</versionRange>
+										<goals>
+											<goal>enforce</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.springframework.boot
+										</groupId>
+										<artifactId>
+											spring-boot-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.0.3.RELEASE,)
+										</versionRange>
+										<goals>
+											<goal>build-info</goal>
+											<goal>repackage</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<!-- <pluginExecution> <pluginExecutionFilter> <groupId> org.codehaus.mojo 
+									</groupId> <artifactId> cobertura-maven-plugin </artifactId> <versionRange> 
+									[2.7,) </versionRange> <goals> <goal>clean</goal> <goal>instrument</goal> 
+									<goal>cobertura</goal> </goals> </pluginExecutionFilter> <action> <ignore 
+									/> </action> </pluginExecution> -->
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+					</excludes>
+					<systemPropertyVariables>
+						<java.security.egd>file:/dev/./urandom</java.security.egd>
+						<java.awt.headless>true</java.awt.headless>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-rules</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<bannedDependencies>
+									<excludes>
+										<exclude>commons-logging:*:*</exclude>
+									</excludes>
+									<searchTransitive>true</searchTransitive>
+								</bannedDependencies>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+				<inherited>true</inherited>
+			</plugin>
+
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>3.1.3</version>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Low</threshold>
+					<xmlOutput>false</xmlOutput>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.github.spotbugs</groupId>
+						<artifactId>spotbugs</artifactId>
+						<version>3.1.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<check>
+						<!--每个类的分支覆盖率 -->
+						<branchRate>85</branchRate>
+						<!--每个类的代码行覆盖率 -->
+						<lineRate>85</lineRate>
+						<!--校验失败则中止.即为true时如果校验失败则打包执行失败,反之则只是打出告警日志 -->
+						<haltOnFailure>false</haltOnFailure>
+						<!--整体的分支覆盖率 -->
+						<totalBranchRate>85</totalBranchRate>
+						<!--整体的代码行覆盖率 -->
+						<totalLineRate>85</totalLineRate>
+						<!--每个包的分支行覆盖率 -->
+						<packageBranchRate>85</packageBranchRate>
+						<!--每个包的代码行覆盖率 -->
+						<packageLineRate>85</packageLineRate>
+					</check>
+					<instrumentation>
+						<excludes>
+							<exclude>com.piggy.stock.core.domain.*</exclude>
+						</excludes>
+					</instrumentation>
+					<formats>
+						<format>xml</format>
+						<format>html</format>
+					</formats>
+					<configuration>
+						<skip>false</skip>
+					</configuration>
+				</configuration>
+				<executions>
+					<!-- <execution> <id>cobertura-clean</id> <phase>clean</phase> <goals> 
+						<goal>clean</goal> </goals> </execution> <execution> <id>cobertura-instrument</id> 
+						<phase>compile</phase> <goals> <goal>instrument</goal> </goals> </execution> 
+						<execution> <id>cobertura-cobertura</id> <phase>prepare-package</phase> <goals> 
+						<goal>cobertura</goal> </goals> </execution> -->
+
+				</executions>
+				<dependencies>
+					<!-- <dependency> <groupId>net.sourceforge.cobertura</groupId> <artifactId>cobertura</artifactId> 
+						<version>2.1.1</version> </dependency> -->
+				</dependencies>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+
+	<profiles>
+
+		<profile>
+			<id>spring-boot</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/resources/bootstrap.properties</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profiles.active>dev</profiles.active>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>stg</id>
+			<properties>
+				<profiles.active>stg</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>prd</id>
+			<properties>
+				<profiles.active>prd</profiles.active>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>filters-env</id>
+			<activation>
+				<file>
+					<exists>${basedir}/src/main/filters</exists>
+				</file>
+			</activation>
+			<build>
+				<filters>
+					<filter>src/main/filters/${profiles.active}.properties</filter>
+				</filters>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+		<profile>
+			<id>filters-env-test</id>
+			<activation>
+				<file>
+					<exists>${basedir}/test/main/filters</exists>
+				</file>
+			</activation>
+			<build>
+				<filters>
+					<filter>test/main/filters/${profiles.active}.properties</filter>
+				</filters>
+				<resources>
+					<resource>
+						<directory>test/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+		<profile>
+			<id>fast</id>
+			<activation>
+				<property>
+					<name>fast</name>
+				</property>
+			</activation>
+			<properties>
+				<disable.checks>true</disable.checks>
+			</properties>
+		</profile>
+
+
+	</profiles>
+
+
+	<repositories>
+		<repository>
+			<id>central2</id>
+			<url>http://mvnrepository.com</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<url>http://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<url>http://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>central1</id>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+	</pluginRepositories>
+
+</project>

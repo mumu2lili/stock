@@ -1,0 +1,173 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	font-family: Verdana, Arial, '宋体';
+	font-size: 16px;
+}
+
+strong {
+	font-family: '微软雅黑';
+	font-size: 14px;
+	color: #000;
+	font-weight: 800;
+}
+
+h2, h3, h4, h5, h6, em {
+	font-weight: bold;
+}
+
+body {
+	text-align: center;
+}
+
+div {
+	margin: 1 auto;
+	border: 1px solid red;
+}
+
+li {
+	list-style: none;
+	float: left;
+	line-height: 20px;
+}
+
+div.top-nav {
+	width: 1300px;
+	height: 30px;
+}
+
+div.top-nav li {
+	width: 400px;
+	line-height: 30px;
+}
+
+div.main {
+	width: 1300px;
+	height: 800px;
+}
+
+div.left {
+	width: 296px;
+	height: 300px;
+	float: left;
+}
+
+div.left li {
+	width: 296px;
+}
+
+div.nav {
+	width: 1000px;
+	height: 30px;
+	float: left;
+}
+
+div.nav li {
+	width: 100px;
+	line-height: 30px;
+}
+
+div.nav li.great {
+	width: 20px;
+}
+
+div.chapter {
+	width: 1000px;
+	height: 700px;
+	float: right;
+}
+
+input[type=text] {
+	border: 1px solid red;
+}
+
+input[type=text].title {
+	width: 1000px;
+}
+
+textarea.content {
+	width: 1000px;
+	border: 1px solid red;
+}
+
+input[type=button] {
+	width: 100px;
+	background-color: 00FF00;
+}
+
+div.title {
+	margin: 0;
+	width: 1000px;
+}
+
+div.content {
+	text-align: left;
+	width: 1000px;
+	border: 0;
+}
+
+div.types {
+	width: 1000px;
+	height: 500px;
+	float: right;
+}
+
+div.types ul {
+	width: 1000px;
+	height: 30px;
+}
+
+div.types li {
+	width: 300px;
+}
+
+div.type {
+	width: 1000px;
+	height: 30px;
+	float: right;
+}
+
+div.type li {
+	width: 300px;
+}
+
+div.books {
+	width: 1000px;
+	height: 500px;
+	float: right;
+}
+
+div.books ul {
+	width: 1000px;
+	height: 30px;
+}
+
+div.books li {
+	width: 300px;
+}
+
+div.book {
+	width: 1000px;
+	height: 30px;
+	float: right;
+}
+
+div.book li {
+	width: 300px;
+}
+
+div.directory {
+	width: 1000px;
+	height: 500px;
+	float: right;
+}
+
+div.directory li {
+	width: 300px;
+}

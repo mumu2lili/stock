@@ -1,0 +1,8 @@
+1.执行测试
+执行maven命令mvn cobertura:cobertura,
+执行完后会在target目录里找到site目录,用浏览器打开里面的index.html,
+这就是测试用例执行完后cobertura-maven-plugin得出的覆盖率报告。
+
+2.查看文档
+mvn cobertura:help
+

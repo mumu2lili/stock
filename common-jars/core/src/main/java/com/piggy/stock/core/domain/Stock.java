@@ -6,6 +6,7 @@ public class Stock {
 	private String exchange;
 	private String board;
 	private String code;
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -37,6 +38,14 @@ public class Stock {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

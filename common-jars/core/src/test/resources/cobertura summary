@@ -5,4 +5,7 @@
 
 2.查看文档
 mvn cobertura:help
+mvn cobertura:help -Ddetail=true -Dgoal=<goal-name>
+
+
 

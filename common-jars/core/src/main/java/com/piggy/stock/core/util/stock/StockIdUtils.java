@@ -9,7 +9,7 @@ public abstract class StockIdUtils {
 	private static final long BOARD_FACTOR = 1000L * 1000L * 1000L * 1000L * 1000L * 10L;
 
 	public static long calStockId(String exchange, String board, String code) {
-		long id = 0; // TODO 算法待修改
+		long id = 0;
 		if (StockCsts.EXCHANGE_SHANGHAI.equals(exchange)) {
 			id = 1 * EXCHANGE_FACTOR;
 		} else if (StockCsts.EXCHANGE_SHENZHEN.equals(exchange)) {
@@ -34,4 +34,5 @@ public abstract class StockIdUtils {
 	public static long calStockId(Stock stock) {
 		return calStockId(stock.getExchange(), stock.getBoard(), stock.getCode());
 	}
+
 }

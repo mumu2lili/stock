@@ -43,7 +43,8 @@ public class StockDictRestTest {
 		headers.setContentType(type);
 
 		HttpEntity<Object> entity = new HttpEntity<Object>(stock, headers);
-		ResponseEntity<StockDict> res = restTemplate.postForEntity("http://stock-dict/dicts", entity, StockDict.class);
+		ResponseEntity<StockDict> res = restTemplate.postForEntity("http://stock-dict-v1/dicts", entity,
+				StockDict.class);
 		stock = res.getBody();
 	}
 
@@ -51,7 +52,8 @@ public class StockDictRestTest {
 	public void testGetStockDict() {
 
 		Long id = 1010000000000600000L;
-		ResponseEntity<StockDict> res = restTemplate.getForEntity("http://stock-dict/dicts/{id}", StockDict.class, id);
+		ResponseEntity<StockDict> res = restTemplate.getForEntity("http://stock-dict-v1/dicts/{id}", StockDict.class,
+				id);
 		StockDict stock = res.getBody();
 		Assert.assertEquals(id, stock.getId());
 	}
@@ -62,7 +64,7 @@ public class StockDictRestTest {
 		int pageNum = 2;
 		int pageSize = 10;
 		ResponseEntity<PageInfo<StockDict>> res = restTemplate.exchange(
-				"http://stock-dict/dicts?pageNum={pageNum}&pageSize={pageSize}", HttpMethod.GET, null,
+				"http://stock-dict-v1/dicts?pageNum={pageNum}&pageSize={pageSize}", HttpMethod.GET, null,
 				new ParameterizedTypeReference<PageInfo<StockDict>>() {
 				}, pageNum, pageSize);
 		PageInfo<StockDict> stock = res.getBody();

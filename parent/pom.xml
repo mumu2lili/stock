@@ -347,16 +347,16 @@
 			<id>filters-env-test</id>
 			<activation>
 				<file>
-					<exists>${basedir}/test/main/filters</exists>
+					<exists>${basedir}/src/test/filters</exists>
 				</file>
 			</activation>
 			<build>
 				<filters>
-					<filter>test/main/filters/${profiles.active}.properties</filter>
+					<filter>src/test/filters/${profiles.active}.properties</filter>
 				</filters>
 				<resources>
 					<resource>
-						<directory>test/main/resources</directory>
+						<directory>src/test/resources</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>

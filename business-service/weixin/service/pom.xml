@@ -11,9 +11,9 @@
 		<relativePath>../../../parent/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>stock-dict-service</artifactId>
+	<artifactId>stock-weixin-service</artifactId>
 
-	<name>stock-dict-service</name>
+	<name>stock-weixin-service</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>

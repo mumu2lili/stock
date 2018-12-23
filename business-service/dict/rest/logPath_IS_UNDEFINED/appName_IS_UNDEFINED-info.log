@@ -1,0 +1,8 @@
+2018-11-11 21:40:56.756 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 21:45:56.760 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 21:50:56.763 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 21:55:56.769 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 22:00:56.774 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 22:05:56.778 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 22:10:56.781 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration
+2018-11-11 22:15:56.784 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver -Resolving eureka endpoints via configuration

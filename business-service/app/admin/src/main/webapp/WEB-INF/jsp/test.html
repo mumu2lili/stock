@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+function delObj(obj){
+        for(let Key in obj){//遍历对象的每一个属性
+             if(obj[Key]=== ''||obj[Key] === null) {//假如属性值为''或者null
+                   delete obj[Key]//从数组元素中删除这个属性
+             } else {
+                   if(Array.isArray(obj[Key])) {//假如对象元素是一个数组
+                        obj[Key].forEach(item=> {//遍历数组obj[Key]，item为数组的每一个元素
+                           for(let key in item) {//遍历数组元素的每一个属性
+                              if(item[key] === ''||item[key] === null) {//假如属性值为''或者null
+                                   delete item[key]//从数组元素中删除这个属性
+                              } else {
+                                   if(Array.isArray(item[key])) {//假如数组元素仍是一个数组
+                                        delObj(item[key]);//递归调用此方法
+                                   }
+                              }
+                            }
+                         })           
+                     }
+              }
+        }
+        return obj//返回数组
+}
+       
+  var obj = {
+	"menuid": "",
+	"button": "",
+	"menu": {
+		"menuid": "",
+		"button": [{
+			"type": "view",
+			"name": "今日歌曲",
+			"url": "http://www.soso.com/",
+			"key": "",
+			"sub_button": ""
+		}, {
+			"type": "view",
+			"name": "歌手简介",
+			"url": "http://www.soso.com/",
+			"key": "",
+			"sub_button": ""
+		}],
+		"menu": "",
+		"conditionalmenu": ""
+	},
+	"conditionalmenu": "",
+	"layui_code": "0"
+};
+
+delObj(obj);
+
+</script>
+
+</body>
+</html>

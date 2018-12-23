@@ -1,10 +1,9 @@
-package com.piggy.stock.dict.dao;
+package com.piggy.stock.weixin.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import com.piggy.stock.dict.domain.StockDict;
-import com.piggy.stock.dict.mybatis.TenantDataPerm;
+import com.piggy.stock.weixin.domain.StockDict;
 
 public interface StockDictMapper {
 	int deleteByPrimaryKey(Long id);
@@ -13,7 +12,6 @@ public interface StockDictMapper {
 
 	int insertSelective(StockDict record);
 
-	@TenantDataPerm
 	StockDict selectByPrimaryKey(Long id);
 
 	List<StockDict> select(Map<String, Object> params);

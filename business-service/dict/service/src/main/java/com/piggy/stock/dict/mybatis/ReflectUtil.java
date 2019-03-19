@@ -21,12 +21,8 @@ public class ReflectUtil {
 			field.setAccessible(true);
 			try {
 				result = field.get(obj);
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 		}
 		return result;

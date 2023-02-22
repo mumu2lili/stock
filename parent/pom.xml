@@ -35,7 +35,7 @@
 		<mybatis-starter.version>1.3.0</mybatis-starter.version>
 		<dhcp2.version>2.1.1</dhcp2.version>
 		<mysql.version>5.1.22</mysql.version>
-		<commons-fileupload.version>1.3.3</commons-fileupload.version>
+		<commons-fileupload.version>1.5</commons-fileupload.version>
 
 		<!-- Transitive dependencies, declared explicitly to avoid version mismatch -->
 		<log4j.version>1.2.17</log4j.version>
